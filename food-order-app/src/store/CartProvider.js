@@ -13,8 +13,8 @@ const cartReducer = (state, action) => {
     return {
       items: updatedItems,
       totalAmount: updatedTotalAmount
-    }
-  } else if (action.type === "REMOVE") {
+    } 
+  } else if (action.type === "REMOVE") {  
   }
   return defaultCartState;
 };
@@ -25,12 +25,12 @@ const CartProvider = (props) => {
     defaultCartState
   );
 
-  const addItemToCartHandler = (item) => {
+  const addItemToCartHandler = ((item) => {
     dispatchCartAction({ type: "ADD", item: item });
-  };
+  });
 
   const removeItemFromCartHandler = (item) => {
-    dispatchCartAction({ type: "REMOVE", item: item });
+    dispatchCartAction({ type: "REMOVE", id: id });
   };
 
   const cartContext = {
