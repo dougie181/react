@@ -6,10 +6,8 @@ import styles from "./HeaderCartButton.module.css";
 
 const HeaderCartButton = (props) => {
   const cardCtx = useContext(CartContext);
-
   const numberOfCartItems = cardCtx.items.reduce((currNumber, item) => { 
-    console.log("currNumber" + currNumber);
-    return currNumber + item.count;
+    return currNumber + item.amount;
   }, 0);
 
   return (
