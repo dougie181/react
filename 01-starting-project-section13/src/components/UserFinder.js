@@ -4,6 +4,7 @@ import Users from "./Users";
 
 import styles from "./UserFinder.module.css";
 import UsersContext from "../store/users-context";
+import ErrorBoundary from "./ErrorBoundary";
 
 // const DUMMY_USERS = [
 //   { id: "u1", name: "Max" },
@@ -40,18 +41,20 @@ class UserFinder extends Component {
 
   componentDidMount() {
     // .. send http request to retrieve users
-    this.setState( {
-      filteredUsers: this.context.users
-    })
+    this.setState({
+      filteredUsers: this.context.users,
+    });
   }
-  
+
   render() {
     return (
       <Fragment>
         <div className={styles.finder}>
           <input type="search" onChange={this.searchChangeHandler.bind(this)} />
         </div>
-        <Users users={this.state.filteredUsers} />
+        <ErrorBoundary>
+          <Users users={this.state.filteredUsers} />
+        </ErrorBoundary>
       </Fragment>
     );
   }
